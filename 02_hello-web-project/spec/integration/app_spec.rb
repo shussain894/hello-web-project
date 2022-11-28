@@ -21,4 +21,12 @@ describe Application do
       expect(response.body).to eq("Julia, Mary, Karim")
     end
   end
+
+  context "POST /sort-names to pass with list of names" do
+    it "returns 200 OK with the sorted list" do
+      response = post('/sort-names?names=Joe,Alice,Zoe,Julia,Kieran')
+      expect(response.status).to eq(200)
+      expect(response.body).to eq 'Alice,Joe,Julia,Kieran,Zoe'
+    end
+  end 
 end
