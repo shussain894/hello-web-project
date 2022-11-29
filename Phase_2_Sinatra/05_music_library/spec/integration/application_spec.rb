@@ -61,4 +61,28 @@ describe Application do
       expect(response.body).to eq expected_response
     end
   end 
+
+  context "GET /albums" do
+    it "should return a single album" do
+      response = get('/albums/2')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include('<h1>Surfer Rosa</h1>')
+      expect(response.body).to include('Release year: 1988')
+      expect(response.body).to include('Artist: Pixies')
+
+    end
+  end 
+
+  context "GET all /albums" do
+    it "should return all the albums" do
+      response = get('/all_albums')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include 'Lover'
+      expect(response.body).to include 'Folklore'
+      expect(response.body).to include 'Released: 1988'
+      expect(response.body).to include 'Released: 2020'
+    end
+  end 
 end 
