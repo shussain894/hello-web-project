@@ -1,0 +1,20 @@
+<!-- GET /all_artists -->
+
+<html>
+  <head></head>
+  <body>
+    <h1>Artists</h1>
+
+    <% @artists.each do |artist| %>
+
+    <div>
+    <br/>Name: <%= artist.name %> <br />
+    Genre: <%=  artist.genre %> <br />
+    <a href="/artist/<%=artist.id%>">Go to the id page</a>
+    </div>
+    <% end %>
+
+    
+    <!-- ... -->
+  </body>
+</html>

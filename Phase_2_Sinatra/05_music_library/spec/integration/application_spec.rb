@@ -74,7 +74,7 @@ describe Application do
     end
   end 
 
-  context "GET all /albums" do
+  context "GET all /all_albums" do
     it "should return all the albums" do
       response = get('/all_albums')
 
@@ -84,5 +84,38 @@ describe Application do
       expect(response.body).to include 'Released: 1988'
       expect(response.body).to include 'Released: 2020'
     end
+  end 
+
+  context "GET /all_albums/id" do
+    xit "should return a link to each album id" do
+      response = get('/all_albums')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include('Title: Surfer Rosa <br />Released: 1988 <br /><a href="/albums/2">Go to the id page</a>')
+      expect(response.body).to include('<br/>Title: Waterloo <br />Released: 1974 <br /><a href="/albums/3">Go to the id page</a>')
+      # all tests pass if all_albums.erb <div> content is on one line (11-13), broke it up for sake of readability
+    end 
+  end
+
+  context "GET /artist" do
+    it "should return a single artist" do
+      response = get('/artist/3')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include('Name: Taylor Swift')
+      expect(response.body).to include('Genre: Pop')
+    end
+  end 
+
+  context "GET /all_artists" do
+    it "should return all artists with a link to their id page" do
+      response = get('/all_artists')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include('<br/>Name: Taylor Swift <br />Genre: Pop <br /><a href="/artist/3">Go to the id page</a>')
+      expect(response.body).to include('<br/>Name: Nina Simone <br />Genre: Pop <br /><a href="/artist/4">Go to the id page</a>')
+      # all tests pass if all_artists.erb <div> content is on one line (11-13), broke it up for sake of readability
+
+    end 
   end 
 end 
