@@ -36,7 +36,7 @@ describe Application do
   end 
 
   context 'POST /albums' do
-    xit "should create a new album" do
+    it "should create a new album" do
       response = post('/albums', title: 'OK Computer', release_year: '1997', artist_id: '1')
 
       expect(response.status).to eq 200
@@ -49,7 +49,7 @@ describe Application do
   end 
 
   context 'POST /artists' do
-    xit "should create a new artist" do
+    it "should create a new artist" do
       response = post('/artists', name: 'Wild nothing', genre: 'Indie')
 
       expect(response.status).to eq 200
@@ -87,7 +87,7 @@ describe Application do
   end 
 
   context "GET /all_albums/id" do
-    xit "should return a link to each album id" do
+    it "should return a link to each album id" do
       response = get('/all_albums')
 
       expect(response.status).to eq 200
@@ -108,7 +108,7 @@ describe Application do
   end 
 
   context "GET /all_artists" do
-    xit "should return all artists with a link to their id page" do
+    it "should return all artists with a link to their id page" do
       response = get('/all_artists')
 
       expect(response.status).to eq 200
